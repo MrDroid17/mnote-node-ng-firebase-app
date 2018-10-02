@@ -15,6 +15,7 @@ import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AuthService } from './services/auth.service';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -36,7 +37,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes, { useHash: false }),
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
