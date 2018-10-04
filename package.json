@@ -1,13 +1,15 @@
 {
     "name": "mnote-node-ng-firebase-app",
     "version": "0.0.0",
+    "homepage": "mrdroid17.github.io/Note-app-AngularUI-api-integration",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
-        "e2e": "ng e2e"
+        "e2e": "ng e2e",
+        "deploy": "gh-pages -d dist"
     },
     "private": true,
     "dependencies": {
@@ -25,9 +27,10 @@
         "@angular/router": "^6.0.3",
         "core-js": "^2.5.4",
         "firebase": "^5.5.2",
+        "gh-pages": "^2.0.0",
         "rxjs": "^6.3.3",
-        "zone.js": "^0.8.26",
-        "sweetalert": "^2.1.0"
+        "sweetalert": "^2.1.0",
+        "zone.js": "^0.8.26"
     },
     "devDependencies": {
         "@angular/compiler-cli": "^6.0.3",
