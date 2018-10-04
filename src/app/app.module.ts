@@ -16,6 +16,9 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthService } from './services/auth.service';
+import { ValidateService } from './services/validate.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatTableModule, MatPaginator, MatPaginatorModule, MatSortModule, MatFormField } from '@angular/material';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -36,8 +39,14 @@ const routes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes, { useHash: false }),
+    BrowserAnimationsModule,
+    MatButtonModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, ValidateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

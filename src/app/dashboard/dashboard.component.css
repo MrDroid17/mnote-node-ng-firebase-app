@@ -1,0 +1,17 @@
+.mat-flat-button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px
+}
+
+.mat-table {
+    width: 100%;
+    text-align: center;
+}
+
+.mat-header-cell {
+    text-align: center;
+    background: rgb(147, 209, 183);
+    font-size: 16px;
+    font-weight: bold
+}

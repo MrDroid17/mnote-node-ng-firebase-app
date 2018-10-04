@@ -1,3 +1,82 @@
-<p>
-  dashboard works!
-</p>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="col-md-12" style="margin-top:20px">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4> Add note </h4>
+                    </div>
+                    <div class="panel-body">
+                        <!-- <form (click)="addNewNote()" (click)="updateNote(note, note_object_id)"> -->
+                        <!-- <form (submit)="is_edit_mode ? updateNote( note, note_id ) : addNewNote()"> -->
+                        <form (submit)=addNewNote()>
+
+                            <div class="form-group note-form">
+                                <label class="note-form">Note:</label>
+                                <input class="note-form" type="text" [(ngModel)]="note" name="note" class="form-control" required>
+                                <label class="note-form">Author:</label>
+                                <input class="note-form" style="display:inline" type="text" [(ngModel)]="author" name="author" class="form-control" required>
+                            </div>
+
+
+                            <button mat-flat-button type="submit" class="btn btn-md btn-success">{{button_title}}</button>
+                            <!-- Edit Note button -->
+                            <!-- <button type="click" class="btn btn-md btn-success" *ngIf="is_edit_mode">Update</button> -->
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>Notes List:</h4>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="col-md-8">
+                            <div class="mat-elevation-z8">
+                                <table mat-table [dataSource]="dataSource">
+
+                                    <ng-container matColumnDef="note">
+                                        <th mat-header-cell *matHeaderCellDef> Note</th>
+                                        <td mat-cell *matCellDef="let note"> {{note.note}} </td>
+                                    </ng-container>
+
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="author">
+                                        <th mat-header-cell *matHeaderCellDef> Author </th>
+                                        <td mat-cell *matCellDef="let note"> {{note.author}} </td>
+                                    </ng-container>
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="action">
+                                        <th mat-header-cell *matHeaderCellDef> Action </th>
+                                        <td mat-cell *matCellDef="let note">
+
+
+                                            <!-- <button class="btn btn-default icons" title="update note" (click)="onClickEditNote(note,note._id)">
+                                                <i class="fa fa-edit big-icon" aria-hidden="true"></i>
+                                            </button> -->
+
+                                            <button mat-flat-button title="Delete Note" (click)="onClickDeleteNote(note.id)">Delete</button>
+                                            <button mat-flat-button title="Edit Note" (click)="onClickEditNote(note.id)">Edit</button>
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="note_array_label"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: note_array_label;"></tr>
+                                </table>
+
+                                <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
