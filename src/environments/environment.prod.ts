@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  serverUrl: 'https://angular-firebase-storage-b50a7.firebaseapp.com',
   firebaseConfig : {
     apiKey: 'AIzaSyBvj5vyeHiIZYmrwk0a6Z0MrGPdaE8w1mE',
     authDomain: 'angular-firebase-storage-b50a7.firebaseapp.com',
