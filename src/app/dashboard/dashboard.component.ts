@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   button_title = 'Add';
   dataSource;
   note: string;
+  id: string;
   author: string;
   note_array_label: string[] = ['note', 'author', 'action'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -51,23 +52,73 @@ export class DashboardComponent implements OnInit {
   // add note function
   addNewNote() {
     // tslint:disable-next-line:no-shadowed-variable
-    const Note = {
-      note: this.note,
-      author: this.author
-    };
+    if (this.button_title === 'Update') {
 
-    // check validation
-    if (!this.validateService.validateNote(Note)) {
-      swal('please enter note and author name.');
-      return false;
+      this.onClickEditNote({ note: this.note, author: this.author });
+    } else {
+
+      const NoteNew = {
+        note: this.note,
+        author: this.author
+      };
+
+      // check validation
+      if (!this.validateService.validateNote(NoteNew)) {
+        swal('please enter note and author name.');
+        return false;
+      }
+
+      this.authService.addNote(NoteNew).subscribe(data => {
+        if (data.success) {
+          this.note = ''; // black the field after input
+          this.author = '';
+          this.getAllNotes();  // get all species list
+          swal('New Note added.');
+          this.button_title = 'Add';
+        } else {
+          swal(data.message);
+        }
+      }, err => {
+        return false;
+      });
     }
 
-    this.authService.addNote(Note).subscribe(data => {
+  }
+
+  // edit note
+  onClickEditNote(noteold) {
+    if (this.button_title === 'Add') {
+      this.button_title = 'Update';
+      this.note = noteold.note;
+      this.author = noteold.author;
+      this.id = noteold.id;
+    } else {
+
+      const notenew = noteold;
+      notenew.id = this.id;
+      this.authService.updateNote(notenew, notenew.id).subscribe(data => {
+        if (data.success) {
+          this.getAllNotes();
+          swal('Note updated successfully.');
+          this.button_title = 'Add';
+          this.note = ''; // black the field after input
+          this.author = '';
+        } else {
+          swal(data.message);
+        }
+      }, err => {
+        return false;
+      });
+    }
+  }
+
+
+  // update species function
+  private updateNote(note, id) {
+    this.authService.updateNote(note, id).subscribe(data => {
       if (data.success) {
-        this.note = ''; // black the field after input
-        this.author = '';
-        this.getAllNotes();  // get all species list
-        swal('New Note added.');
+        this.getAllNotes();
+        swal('Note updated successfully.');
         this.button_title = 'Add';
       } else {
         swal(data.message);
@@ -77,6 +128,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  // get all the notes
   private getAllNotes() {
     this.authService.getAllNotes().subscribe(data => {
       if (data.length !== 0) {
