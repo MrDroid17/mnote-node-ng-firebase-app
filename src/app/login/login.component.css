@@ -6,13 +6,3 @@ button {
 .login {
     align-items: center
 }
-
-div {
-    margin-top: 50%;
-    margin-left: 50%;
-    overflow: hidden;
-    height: 25vh;
-    width: 50%;
-    align-items: center;
-    align-content: center
-}

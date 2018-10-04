@@ -2,10 +2,9 @@
     <h1>Hello {{ user.displayName }}!</h1>
     <button mat-flat-button (click)="logout()">Logout</button>
 </div>
-<div>
-    <ng-template #showLogin>
-        <p>Please login.</p>
-        <button mat-flat-button (click)="login()">Login with Google</button>
 
-    </ng-template>
-</div>
+<ng-template #showLogin>
+    <p>Please login.</p>
+    <button mat-flat-button (click)="login()">Login with Google</button>
+
+</ng-template>

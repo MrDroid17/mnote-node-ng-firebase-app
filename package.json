@@ -1,7 +1,7 @@
 {
     "name": "mnote-node-ng-firebase-app",
     "version": "0.0.0",
-    "homepage": "mrdroid17.github.io/Note-app-AngularUI-api-integration",
+    "homepage": "https://mrdroid17.github.io/mnote-node-ng-firebase-app",
     "scripts": {
         "ng": "ng",
         "start": "ng serve",
@@ -9,7 +9,7 @@
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "deploy": "gh-pages -d dist"
+        "deploy": "gh-pages -d dist/mnote-node-ng-firebase-app"
     },
     "private": true,
     "dependencies": {
