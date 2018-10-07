@@ -3,6 +3,8 @@ import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { Note } from '../interface/notes';
 import { AuthService } from '../services/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 import swal from 'sweetalert';
 import { ValidateService } from '../services/validate.service';
 @Component({
@@ -15,6 +17,7 @@ export class DashboardComponent implements OnInit {
   button_title = 'Add';
   dataSource;
   note: string;
+  user_name: string;
   id: string;
   author: string;
   note_array_label: string[] = ['note', 'author', 'action'];
@@ -22,6 +25,7 @@ export class DashboardComponent implements OnInit {
   message = 'Are you sure to delete this note ?';
 
   constructor(
+    public angularFireAuth: AngularFireAuth,
     private authService: AuthService,
     private validateService: ValidateService,
     private router: Router,
@@ -31,6 +35,13 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     // getting all notes
     this.getAllNotes();
+  }
+/**
+ * logout user
+ */
+  logout() {
+    this.angularFireAuth.auth.signOut();
+    this.router.navigate(['/']);
   }
 
   // delete species function

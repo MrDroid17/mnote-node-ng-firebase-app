@@ -1,6 +1,6 @@
 <div *ngIf="angularFireAuth.user | async as user; else showLogin">
-    <h1>Hello {{ user.displayName }}!</h1>
-    <button mat-flat-button (click)="logout()">Logout</button>
+    <!-- <h1>Hello {{ user.displayName }}!</h1>
+    <button mat-flat-button (click)="logout()">Logout</button> -->
 </div>
 
 <ng-template #showLogin>
