@@ -191,7 +191,7 @@ module.exports = ".mat-flat-button {\n    margin-top: 5px;\n    margin-bottom: 5
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<section class=\"content\">\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n\n            <div class=\"col-md-12\" style=\"margin-top:20px\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">\n                        <h4> Add note </h4>\n                    </div>\n                    <div class=\"panel-body\">\n                        <!-- <form (click)=\"addNewNote()\" (click)=\"updateNote(note, note_object_id)\"> -->\n                        <!-- <form (submit)=\"is_edit_mode ? updateNote( note, note_id ) : addNewNote()\"> -->\n                        <form (submit)=addNewNote()>\n\n                            <div class=\"form-group note-form\">\n                                <label class=\"note-form\">Note:</label>\n                                <input class=\"note-form\" type=\"text\" [(ngModel)]=\"note\" name=\"note\" class=\"form-control\" required>\n                                <label class=\"note-form\">Author:</label>\n                                <input class=\"note-form\" style=\"display:inline\" type=\"text\" [(ngModel)]=\"author\" name=\"author\" class=\"form-control\" required>\n                            </div>\n\n\n                            <button mat-flat-button type=\"submit\" class=\"btn btn-md btn-success\">{{button_title}}</button>\n                            <!-- Edit Note button -->\n                            <!-- <button type=\"click\" class=\"btn btn-md btn-success\" *ngIf=\"is_edit_mode\">Update</button> -->\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-md-12\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">\n                        <h4>Notes List:</h4>\n                    </div>\n\n                    <div class=\"panel-body\">\n                        <div class=\"col-md-8\">\n                            <div class=\"mat-elevation-z8\">\n                                <table mat-table [dataSource]=\"dataSource\">\n\n                                    <ng-container matColumnDef=\"note\">\n                                        <th mat-header-cell *matHeaderCellDef> Note</th>\n                                        <td mat-cell *matCellDef=\"let note\"> {{note.note}} </td>\n                                    </ng-container>\n\n                                    <!-- Name Column -->\n                                    <ng-container matColumnDef=\"author\">\n                                        <th mat-header-cell *matHeaderCellDef> Author </th>\n                                        <td mat-cell *matCellDef=\"let note\"> {{note.author}} </td>\n                                    </ng-container>\n\n                                    <!-- Symbol Column -->\n                                    <ng-container matColumnDef=\"action\">\n                                        <th mat-header-cell *matHeaderCellDef> Action </th>\n                                        <td mat-cell *matCellDef=\"let note\">\n\n\n                                            <!-- <button class=\"btn btn-default icons\" title=\"update note\" (click)=\"onClickEditNote(note,note._id)\">\n                                                <i class=\"fa fa-edit big-icon\" aria-hidden=\"true\"></i>\n                                            </button> -->\n\n                                            <button mat-flat-button title=\"Delete Note\" (click)=\"onClickDeleteNote(note.id)\">Delete</button>\n                                            <button mat-flat-button title=\"Edit Note\" (click)=\"onClickEditNote( note, note.id)\">Edit</button>\n                                        </td>\n                                    </ng-container>\n\n                                    <tr mat-header-row *matHeaderRowDef=\"note_array_label\"></tr>\n                                    <tr mat-row *matRowDef=\"let row; columns: note_array_label;\"></tr>\n                                </table>\n\n                                <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\n                            </div>\n\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</section>"
+module.exports = "<section class=\"content\">\n    <div class=\"row\">\n        <div class=\"col-md-12\">\n\n            <div class=\"col-md-12\" style=\"margin-top:20px\">\n                <div class=\"panel panel-default\">\n                    <button mat-flat-button (click)=\"logout()\">Logout</button>\n                    <div class=\"panel-heading\">\n                        <h4> Add note </h4>\n                    </div>\n                    <div class=\"panel-body\">\n                        <!-- <form (click)=\"addNewNote()\" (click)=\"updateNote(note, note_object_id)\"> -->\n                        <!-- <form (submit)=\"is_edit_mode ? updateNote( note, note_id ) : addNewNote()\"> -->\n                        <form (submit)=addNewNote()>\n\n                            <div class=\"form-group note-form\">\n                                <label class=\"note-form\">Note:</label>\n                                <input class=\"note-form\" type=\"text\" [(ngModel)]=\"note\" name=\"note\" class=\"form-control\" required>\n                                <label class=\"note-form\">Author:</label>\n                                <input class=\"note-form\" style=\"display:inline\" type=\"text\" [(ngModel)]=\"author\" name=\"author\" class=\"form-control\" required>\n                            </div>\n\n\n                            <button mat-flat-button type=\"submit\" class=\"btn btn-md btn-success\">{{button_title}}</button>\n                            <!-- Edit Note button -->\n                            <!-- <button type=\"click\" class=\"btn btn-md btn-success\" *ngIf=\"is_edit_mode\">Update</button> -->\n\n                        </form>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-md-12\">\n                <div class=\"panel panel-default\">\n                    <div class=\"panel-heading\">\n                        <h4>Notes List:</h4>\n                    </div>\n\n                    <div class=\"panel-body\">\n                        <div class=\"col-md-8\">\n                            <div class=\"mat-elevation-z8\">\n                                <table mat-table [dataSource]=\"dataSource\">\n\n                                    <ng-container matColumnDef=\"note\">\n                                        <th mat-header-cell *matHeaderCellDef> Note</th>\n                                        <td mat-cell *matCellDef=\"let note\"> {{note.note}} </td>\n                                    </ng-container>\n\n                                    <!-- Name Column -->\n                                    <ng-container matColumnDef=\"author\">\n                                        <th mat-header-cell *matHeaderCellDef> Author </th>\n                                        <td mat-cell *matCellDef=\"let note\"> {{note.author}} </td>\n                                    </ng-container>\n\n                                    <!-- Symbol Column -->\n                                    <ng-container matColumnDef=\"action\">\n                                        <th mat-header-cell *matHeaderCellDef> Action </th>\n                                        <td mat-cell *matCellDef=\"let note\">\n\n\n                                            <!-- <button class=\"btn btn-default icons\" title=\"update note\" (click)=\"onClickEditNote(note,note._id)\">\n                                                <i class=\"fa fa-edit big-icon\" aria-hidden=\"true\"></i>\n                                            </button> -->\n\n                                            <button mat-flat-button title=\"Delete Note\" (click)=\"onClickDeleteNote(note.id)\">Delete</button>\n                                            <button mat-flat-button title=\"Edit Note\" (click)=\"onClickEditNote( note, note.id)\">Edit</button>\n                                        </td>\n                                    </ng-container>\n\n                                    <tr mat-header-row *matHeaderRowDef=\"note_array_label\"></tr>\n                                    <tr mat-row *matRowDef=\"let row; columns: note_array_label;\"></tr>\n                                </table>\n\n                                <mat-paginator [pageSizeOptions]=\"[5, 10, 20]\" showFirstLastButtons></mat-paginator>\n                            </div>\n\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n\n    </div>\n</section>"
 
 /***/ }),
 
@@ -209,9 +209,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
 /* harmony import */ var _services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/auth.service */ "./src/app/services/auth.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
-/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _services_validate_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../services/validate.service */ "./src/app/services/validate.service.ts");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/index.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! sweetalert */ "./node_modules/sweetalert/dist/sweetalert.min.js");
+/* harmony import */ var sweetalert__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(sweetalert__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _services_validate_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/validate.service */ "./src/app/services/validate.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -227,8 +228,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var DashboardComponent = /** @class */ (function () {
-    function DashboardComponent(authService, validateService, router, activatedRoute) {
+    function DashboardComponent(angularFireAuth, authService, validateService, router, activatedRoute) {
+        this.angularFireAuth = angularFireAuth;
         this.authService = authService;
         this.validateService = validateService;
         this.router = router;
@@ -241,6 +244,13 @@ var DashboardComponent = /** @class */ (function () {
         // getting all notes
         this.getAllNotes();
     };
+    /**
+     * logout user
+     */
+    DashboardComponent.prototype.logout = function () {
+        this.angularFireAuth.auth.signOut();
+        this.router.navigate(['/']);
+    };
     // delete species function
     DashboardComponent.prototype.onClickDeleteNote = function (note_id) {
         var _this = this;
@@ -248,10 +258,10 @@ var DashboardComponent = /** @class */ (function () {
             this.authService.deleteNote(note_id).subscribe(function (data) {
                 if (data) {
                     _this.getAllNotes();
-                    sweetalert__WEBPACK_IMPORTED_MODULE_4___default()('Note deleted successfully.');
+                    sweetalert__WEBPACK_IMPORTED_MODULE_5___default()('Note deleted successfully.');
                 }
                 else {
-                    sweetalert__WEBPACK_IMPORTED_MODULE_4___default()(data.message);
+                    sweetalert__WEBPACK_IMPORTED_MODULE_5___default()(data.message);
                 }
             }, function (err) {
                 return false;
@@ -272,7 +282,7 @@ var DashboardComponent = /** @class */ (function () {
             };
             // check validation
             if (!this.validateService.validateNote(NoteNew)) {
-                sweetalert__WEBPACK_IMPORTED_MODULE_4___default()('please enter note and author name.');
+                sweetalert__WEBPACK_IMPORTED_MODULE_5___default()('please enter note and author name.');
                 return false;
             }
             this.authService.addNote(NoteNew).subscribe(function (data) {
@@ -280,11 +290,11 @@ var DashboardComponent = /** @class */ (function () {
                     _this.note = ''; // black the field after input
                     _this.author = '';
                     _this.getAllNotes(); // get all species list
-                    sweetalert__WEBPACK_IMPORTED_MODULE_4___default()('New Note added.');
+                    sweetalert__WEBPACK_IMPORTED_MODULE_5___default()('New Note added.');
                     _this.button_title = 'Add';
                 }
                 else {
-                    sweetalert__WEBPACK_IMPORTED_MODULE_4___default()(data.message);
+                    sweetalert__WEBPACK_IMPORTED_MODULE_5___default()(data.message);
                 }
             }, function (err) {
                 return false;
@@ -306,13 +316,13 @@ var DashboardComponent = /** @class */ (function () {
             this.authService.updateNote(notenew, notenew.id).subscribe(function (data) {
                 if (data.success) {
                     _this.getAllNotes();
-                    sweetalert__WEBPACK_IMPORTED_MODULE_4___default()('Note updated successfully.');
+                    sweetalert__WEBPACK_IMPORTED_MODULE_5___default()('Note updated successfully.');
                     _this.button_title = 'Add';
                     _this.note = ''; // black the field after input
                     _this.author = '';
                 }
                 else {
-                    sweetalert__WEBPACK_IMPORTED_MODULE_4___default()(data.message);
+                    sweetalert__WEBPACK_IMPORTED_MODULE_5___default()(data.message);
                 }
             }, function (err) {
                 return false;
@@ -325,11 +335,11 @@ var DashboardComponent = /** @class */ (function () {
         this.authService.updateNote(note, id).subscribe(function (data) {
             if (data.success) {
                 _this.getAllNotes();
-                sweetalert__WEBPACK_IMPORTED_MODULE_4___default()('Note updated successfully.');
+                sweetalert__WEBPACK_IMPORTED_MODULE_5___default()('Note updated successfully.');
                 _this.button_title = 'Add';
             }
             else {
-                sweetalert__WEBPACK_IMPORTED_MODULE_4___default()(data.message);
+                sweetalert__WEBPACK_IMPORTED_MODULE_5___default()(data.message);
             }
         }, function (err) {
             return false;
@@ -361,8 +371,9 @@ var DashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./dashboard.component.html */ "./src/app/dashboard/dashboard.component.html"),
             styles: [__webpack_require__(/*! ./dashboard.component.css */ "./src/app/dashboard/dashboard.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
-            _services_validate_service__WEBPACK_IMPORTED_MODULE_5__["ValidateService"],
+        __metadata("design:paramtypes", [_angular_fire_auth__WEBPACK_IMPORTED_MODULE_4__["AngularFireAuth"],
+            _services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"],
+            _services_validate_service__WEBPACK_IMPORTED_MODULE_6__["ValidateService"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"],
             _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]])
     ], DashboardComponent);
@@ -391,7 +402,7 @@ module.exports = "button {\n    align-items: center;\n    align-content: center\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"angularFireAuth.user | async as user; else showLogin\">\n    <h1>Hello {{ user.displayName }}!</h1>\n    <button mat-flat-button (click)=\"logout()\">Logout</button>\n</div>\n\n<ng-template #showLogin>\n    <p>Please login.</p>\n    <button mat-flat-button (click)=\"login()\">Login with Google</button>\n\n</ng-template>"
+module.exports = "<div *ngIf=\"angularFireAuth.user | async as user; else showLogin\">\n    <!-- <h1>Hello {{ user.displayName }}!</h1>\n    <button mat-flat-button (click)=\"logout()\">Logout</button> -->\n</div>\n\n<ng-template #showLogin>\n    <p>Please login.</p>\n    <button mat-flat-button (click)=\"login()\">Login with Google</button>\n\n</ng-template>"
 
 /***/ }),
 
